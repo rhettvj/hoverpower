@@ -12,7 +12,7 @@ body {
   font-family: monospace;
 }
 .mainBox {
-  width: 360px;
+  width: 500px;
   margin: auto;
 }
 @media screen and (max-width:481px) {
