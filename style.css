@@ -1,0 +1,85 @@
+:root {
+  --background: #241f31;
+  --background2: #3d3846;
+  --text: #c0bfbc;
+  --detail-text: #77767b;
+  --selected-value: #e5a50a;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: monospace;
+}
+.mainBox {
+  width: 400px;
+  margin: auto;
+}
+h1 {
+  font-size: 1.3em;
+}
+h2 {
+  font-size: 1.2em;
+  text-align: center;
+}
+.detail {
+  size: .9em;
+  color: var(--detail-text);
+}
+.section {
+  background-color: var(--background2);
+  margin-top: 2px;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+}
+.label {
+}
+p {
+  text-align: center;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+.row {
+  width: 100%;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+select {
+  width: 50%;
+  background: var(--background2);
+  color: var(--text);
+  border: 1px solid var(--text);
+}
+input[type=text] {
+  width: 100%;
+  box-sizing: border-box;
+  color: var(--selected-value);
+  font-weight: bold;
+  background: var(--background2);
+  border: 0;
+  border-bottom: 1px solid var(--text);
+}
+.range_number {
+  align: left;
+  border-bottom: none;
+}
+.slider {
+  width: 100%;
+}
+:disabled {
+  background-color: var(--background2);
+  border: none;
+  border-bottom: none;
+}
+
