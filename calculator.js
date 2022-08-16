@@ -287,19 +287,14 @@ function calc_auw(slider) {
   //was this function called from the slider?
   if (slider == true) {
     fuel = parseInt(document.getElementById('fuel').value);
-    document.getElementById('fuel_display').value = fuel;
+    document.getElementById('fuel_display').innerHTML = fuel;
   } 
-  else {
-    //no, it was called because the text was updated
-    fuel = parseInt(document.getElementById('fuel_display').value);
-    document.getElementById('fuel').value = fuel;
-  }
   var aircraft = parseInt(document.getElementById('aircraft').value);
   var load = parseInt(document.getElementById('load').value);
   
   var auw = aircraft + load + fuel;
-  document.getElementById('auw').value = auw;
-  document.getElementById('aircraft_weight').value = aircraft;
+  document.getElementById('auw').innerHTML = auw;
+  document.getElementById('aircraft_weight').innerHTML = aircraft;
   calc_power_required();
 }
 
@@ -311,24 +306,25 @@ function calc_power_required(auw_invalid) {
   var auw = parseInt(document.getElementById('auw').value);
   
   if (auw < 11000 || auw > 15500) {
-    document.getElementById('pr').value = 'Bad AUW';
+    document.getElementById('pr').innerHTML = 'Bad AUW';
     return;
   }
 
   var power_required_reference = get_power_required_reference(density_altitude, auw);
   var wind = parseInt(document.getElementById('wind').value);
   var power_required = apply_wind(power_required_reference, wind);
-  document.getElementById('pr').value = Math.round(power_required);
+  document.getElementById('pr').innerHTML = Math.round(power_required);
 }
 
 // wind slider moved
 function calc_wind() {
-  document.getElementById('wind_display').value = document.getElementById('wind').value;
+  document.getElementById('wind_display').innerHTML = document.getElementById('wind').value;
   calc_power_required();
 }
 
 
 function init() {
+  document.getElementById('wind_display').innerHTML = document.getElementById('wind').value;
   calc_auw(true);
   calc_power_available();
   //calc_power_required() called twice by the functions above.
