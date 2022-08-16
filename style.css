@@ -78,6 +78,15 @@ input[type=text] {
   border: 0;
   border-bottom: 1px solid var(--text);
 }
+input[type=number] {
+  width: 100%;
+  box-sizing: border-box;
+  color: var(--selected-value);
+  font-weight: bold;
+  background: var(--background2);
+  border: 0;
+  border-bottom: 1px solid var(--text);
+}
 .range_number {
   align: left;
   border-bottom: none;
