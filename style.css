@@ -78,7 +78,7 @@ input[type=text] {
   border: 0;
   border-bottom: 1px solid var(--text);
 }
-textarea[readonly] {
+:readonly {
   color: var(--selected-value);
 }
 input[type=number] {
@@ -104,7 +104,6 @@ input[type=number] {
   height: 35px; /* Slider handle height */
 }
 :disabled {
-  -webkit-text-fill-color: var(--selected-value);
   color: var(--selected-value) !important;
   background-color: var(--background2);
   border: none;
