@@ -95,12 +95,13 @@ input[type=number] {
   width: 100%;
 }
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
+  /* -webkit-appearance: none; Override default look */
+  /* appearance: none; */
   width: 35px; /* Set a specific slider handle width */
   height: 35px; /* Slider handle height */
 }
 :disabled {
+  -webkit-appearance: none; /*Override default look */
   color: var(--selected-value);
   background-color: var(--background2);
   border: none;
