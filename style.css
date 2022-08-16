@@ -101,7 +101,7 @@ input[type=number] {
   height: 35px; /* Slider handle height */
 }
 :disabled {
-  -webkit-appearance: none; /*Override default look */
+  -webkit-text-fill-color: var(--selected-value);
   color: var(--selected-value);
   background-color: var(--background2);
   border: none;
