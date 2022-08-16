@@ -69,7 +69,7 @@ select {
   color: var(--text);
   border: 1px solid var(--text);
 }
-input[type=number] {
+input[type=text] {
   width: 100%;
   box-sizing: border-box;
   color: var(--selected-value);
@@ -92,6 +92,7 @@ input[type=number] {
   height: 35px; /* Slider handle height */
 }
 :disabled {
+  color: var(--selected-value);
   background-color: var(--background2);
   border: none;
   border-bottom: none;
