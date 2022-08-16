@@ -30,6 +30,10 @@ h2 {
   font-size: 1.2em;
   text-align: center;
 }
+.selected_value {
+  font-weight: bold;
+  color: var(--selected-value);
+}
 .detail {
   size: .9em;
   color: var(--detail-text);

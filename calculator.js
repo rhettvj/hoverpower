@@ -272,7 +272,7 @@ function calc_power_available() {
   var temp = parseInt(document.getElementById('temperature').value);
   var power_available = get_power_available(pressure_altitude, temp);
   var power_available_aa = power_available - 8;
-  document.getElementById('temperature_display').value = temp;
+  document.getElementById('temperature_display').innerHTML = temp;
   document.getElementById('pa_aa_off').value = power_available + ' / ' + Math.round(power_available / 3 * 2);
   document.getElementById('pa_aa_on').value = power_available_aa + ' / ' + Math.round(power_available_aa / 3 * 2);
 
