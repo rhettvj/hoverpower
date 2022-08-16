@@ -20,12 +20,12 @@
   
       <div class=section>
         <label for='pressure_altitude' class=label>Pressure Altitude</label> <span class=detail>(feet)</span><br>
-        <input type='text' id='pressure_altitude' value='0' onblur=calc_power_available()>
+        <input type='number' id='pressure_altitude' value=0 onblur=calc_power_available()>
         <br><br>
         <label for='temperature' class=label>Temperature<label> <span class=detail>(°C)</span>
         <div class=row>
           <div class=column style='width: 20%'>
-            <input type='text' size='3' id='temperature_display' class=range_number style='border-bottom: none'  disabled>
+            waka<span id='temperature_display' class=selected_value>0</span>
           </div>
           <div class=column style='width: 80%'>
             <input type='range' min='-40' max='40' step='5' value='0' class=slider  id='temperature' oninput=calc_power_available()>
@@ -35,7 +35,7 @@
         <label for='wind' class=label>Wind</label> <span class=detail>(kts)</span><br>
         <div class=row>
           <div class=column style='width: 20%'>
-            <input type='text' size='3' id='wind_display' disabled style='border-bottom: none'>
+            <input type='number' size='3' id='wind_display' disabled style='border-bottom: none'>
           </div>
           <div class=column style='width: 80%'>
             <input type='range' min='0' max='30' step='5' value='0' class=slider id='wind' oninput=calc_wind()>
@@ -47,7 +47,7 @@
         <label for='aircraft' class=label>Aircraft zero-fuel weight</label><br>
         <div class=row>
           <div class=column>
-            <input type='text' disabled id='aircraft_weight' style='border-bottom: none'>
+            <input type='number' disabled id='aircraft_weight' style='border-bottom: none'>
           </div>
           <div class=column>
             <select id='aircraft' onchange=calc_auw()>
@@ -61,12 +61,12 @@
 
         <label for='load' class=label>Load</label> <span class=detail>(kg)</span><br>
 
-        <input type='text' min='0' max='2000' value='0' id='load' onblur='calc_auw()'><br>
+        <input type='number' min='0' max='2000' value='0' id='load' onblur='calc_auw()'><br>
         <br>
         <label for='fuel' class=label>Fuel</label> <span class=detail>(kg)</span><br>
         <div class=row>
           <div class=column style='width: 20%'>
-            <input type='text' size='3' id='fuel_display' disabled style='border-bottom: none'>
+            <input type='number' size='3' id='fuel_display' disabled style='border-bottom: none'>
           </div>
           <div class=column style='width: 80%'>
             <input type='range' min='0' max='4100' step='100' value='2000' class=slider id='fuel' oninput=calc_auw(true)>
@@ -75,7 +75,7 @@
         
 
         <label for='auw' class=label>AUW</label><br>
-        <input id='auw' type='text' disabled style='border-bottom: none'>
+        <input id='auw' type='number' disabled style='border-bottom: none'>
       </div>
       
       <div class=section>
