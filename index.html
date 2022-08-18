@@ -35,7 +35,7 @@
         <label for='wind' class=label>Wind</label> <span class=detail>(kts)</span><br>
         <div class=row>
           <div class=column style='width: 20%'>
-            <input type='number' size='3' id='wind_display' disabled style='border-bottom: none'>
+            <span id='wind_display' class=selected_value>0<//span>
           </div>
           <div class=column style='width: 80%'>
             <input type='range' min='0' max='30' step='5' value='0' class=slider id='wind' oninput=calc_wind()>
@@ -47,7 +47,7 @@
         <label for='aircraft' class=label>Aircraft zero-fuel weight</label><br>
         <div class=row>
           <div class=column>
-            <input type='number' disabled id='aircraft_weight' style='border-bottom: none'>
+            <span id='aircraft_weight' class=selected_value>11,300<//span>
           </div>
           <div class=column>
             <select id='aircraft' onchange=calc_auw()>
@@ -66,7 +66,7 @@
         <label for='fuel' class=label>Fuel</label> <span class=detail>(kg)</span><br>
         <div class=row>
           <div class=column style='width: 20%'>
-            <input type='number' size='3' id='fuel_display' disabled style='border-bottom: none'>
+            <span id='fuel_display' class=selected_value>2000</span>
           </div>
           <div class=column style='width: 80%'>
             <input type='range' min='0' max='4100' step='100' value='2000' class=slider id='fuel' oninput=calc_auw(true)>
@@ -75,20 +75,20 @@
         
 
         <label for='auw' class=label>AUW</label><br>
-        <input id='auw' type='number' disabled style='border-bottom: none'>
+        <span id='auw' class=selected_value>13,300</span>
       </div>
       
       <div class=section>
         <h2>Power Available</h2>
         <div class=row style='width: 100%'>
-          <div class=column>Anti-Ice Off <br><input type='text' id='pa_aa_off' size='10' disabled style='border-bottom: none;'></div>
-          <div class=column style='align: right; text-align: right;'>Anti-Ice On <br><input type='text' id='pa_aa_on' size='10' disabled style='border-bottom: none; text-align: right;'></div>
+          <div class=column>Anti-Ice Off <br><span id=pa_aa_off class=selected_value>x</span></div>
+          <div class=column style='align: right; text-align: right;'>Anti-Ice On <br><span id=pa_aa_on class=selected_value style='text-align: right'>x</span></div>
         </div>
       </div>
       
       <div class=section>
         <h2>Power Required</h2>
-        <input type='text' id='pr' disabled style='border-bottom: none; text-align: center;'>
+        <span id=pr class=selected_value>x</span>
       </div>
     </div>
   </form>
