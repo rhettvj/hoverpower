@@ -198,6 +198,8 @@ function get_power_available(pressure_altitude, temp) {
   } else {
     power_available = lookup_power_available(pressure_altitude, temp);
   }
+  console.log('get_power_available: pressure alt: ' + pressure_altitude + ' temp: ' + temp);
+  console.log('get_power_available: power_available: ' + power_available);
   return power_available;
 }
 
@@ -214,6 +216,7 @@ function get_power_required_reference(density_altitude, auw) {
   // then we have PR @ 12,500 & 13,000: 12,700
 
   console.log('get_power_required_reference: -------- starting interpolation -------');
+  console.log('get_power_required reference: auw: ' + auw + ' da: ' + density_altitude);
   var lower_altitude = Math.floor(density_altitude / 1000) * 1000;
   var upper_altitude = Math.ceil(density_altitude / 1000) * 1000;
 
@@ -271,13 +274,15 @@ function apply_wind(power_required_reference, wind) {
 // Called whenever there's a change to pressure altitude or temp,
 // calls calc_power_required() as well
 function calc_power_available() {
+  console.log('*******************CALC_POWER_AVAILABLE start *******************');
   var pressure_altitude = parseInt(document.getElementById('pressure_altitude').value);
   var temp = parseInt(document.getElementById('temperature').value);
   var power_available = get_power_available(pressure_altitude, temp);
   var power_available_aa = power_available - 8;
+  console.log('calc_power_available done. writing out ' + power_available);
   document.getElementById('temperature_display').innerHTML = temp;
-  document.getElementById('pa_aa_off').value = power_available + ' / ' + Math.round(power_available / 3 * 2);
-  document.getElementById('pa_aa_on').value = power_available_aa + ' / ' + Math.round(power_available_aa / 3 * 2);
+  document.getElementById('pa_aa_off').innerHTML = power_available + ' / ' + Math.round(power_available / 3 * 2);
+  document.getElementById('pa_aa_on').innerHTML = power_available_aa + ' / ' + Math.round(power_available_aa / 3 * 2);
 
   calc_power_required();
 }
@@ -303,16 +308,16 @@ function calc_auw(slider) {
 
 // Called by calc_auwi,calc_wind or calc_power_available or if there's a change of wind
 function calc_power_required(auw_invalid) {
+  console.log('*******************CALC_POWER_REQUIRED start *******************');
   var pressure_altitude = parseInt(document.getElementById('pressure_altitude').value); 
   var temperature = parseInt(document.getElementById('temperature').value);
   var density_altitude = get_density_altitude(pressure_altitude, temperature);
-  var auw = parseInt(document.getElementById('auw').value);
+  var auw = parseInt(document.getElementById('auw').innerHTML);
   
   if (auw < 11000 || auw > 15500) {
     document.getElementById('pr').innerHTML = 'Bad AUW';
     return;
   }
-
   var power_required_reference = get_power_required_reference(density_altitude, auw);
   var wind = parseInt(document.getElementById('wind').value);
   var power_required = apply_wind(power_required_reference, wind);
