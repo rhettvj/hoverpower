@@ -286,7 +286,7 @@ function calc_power_available() {
 // called whenever there's a change to the aircraft state
 // calls calc_power_required too
 function calc_auw(slider) {
-  var fuel = 0;
+  var fuel = parseInt(document.getElementById('fuel').value);
   //was this function called from the slider?
   if (slider == true) {
     fuel = parseInt(document.getElementById('fuel').value);
