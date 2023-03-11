@@ -278,12 +278,11 @@ function calc_power_available() {
   var pressure_altitude = parseInt(document.getElementById('pressure_altitude').value);
   var temp = parseInt(document.getElementById('temperature').value);
   var power_available = get_power_available(pressure_altitude, temp);
-  power_available = Math.round(power_available); //rounding here only because javascript was doing funky stuff with the -8 line below
   var power_available_aa = power_available - 8;
   console.log('calc_power_available done. writing out ' + power_available);
   document.getElementById('temperature_display').innerHTML = temp;
-  document.getElementById('pa_aa_off').innerHTML = power_available + ' / ' + Math.round(power_available / 3 * 2);
-  document.getElementById('pa_aa_on').innerHTML = power_available_aa + ' / ' + Math.round(power_available_aa / 3 * 2);
+  document.getElementById('pa_aa_off').innerHTML = Math.round(power_available) + ' / ' + Math.round(power_available / 3 * 2);
+  document.getElementById('pa_aa_on').innerHTML = Math.round(power_available_aa) + ' / ' + Math.round(power_available_aa / 3 * 2);
 
   calc_power_required();
 }
