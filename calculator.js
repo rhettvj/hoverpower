@@ -24,7 +24,7 @@ const power_available_table = [
   [117,115,114,112,110,108,107,104,102,098,097,093,089,085,082,-01,-01]
 ];
 
-
+const power_required_row_zero_index = 7;
 const power_required_table = [
   // Each row is a DENSITY altitude,
   // each column is an AUW, starting at 11,000, ending at 15500
@@ -140,10 +140,11 @@ function get_pr_row(density_altitude) {
   var da = Math.round(density_altitude / 1000);
   console.log('Density altitude ' + density_altitude + ' rounded and divided: ' + da);
   console.log('get_pr_row: power_required_table index: ' + (da+4));
-  console.log('pr row: ' + power_required_table[da + 4]);
-  // -4000 has an index of 0 in the table
+  console.log('pr row: ' + power_required_table[da + power_required_row_zero_index]);
+  // -7000 has an index of 0 in the table
+  // 0' has an index of 7
   // 1000' has an index of 3 in the table
-  return power_required_table[da + 4];
+  return power_required_table[da + power_required_row_zero_index];
 }
 
 
