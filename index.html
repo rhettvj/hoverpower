@@ -5,7 +5,7 @@
     <link rel='stylesheet' type='text/css' href='style.css' media='screen' />
     <script type='text/javascript' src='calculator.js'> </script>
     <meta name='viewport' content='width=device, initial-scale=1.0'>
-
+    <title>Hover Power Calculator</title>
   </head>
   
 	<body onload=init()>
@@ -15,12 +15,26 @@
     <div class=mainBox>
 
       <div class=section>
-        <h1>Hover Power Calculator</h1>
+	        <h1>Hover Power Calculator <a class=detail href=info.html>[?]</a> </h1>
+	        <span class=alert id=critical_alert></span>
+     	      	               
       </div>
   
       <div class=section>
-        <label for='pressure_altitude' class=label>Pressure Altitude</label> <span class=detail>(feet)</span><br>
-        <input type='number' id='pressure_altitude' value=0 onblur=calc_power_available()>
+      	<label for='alt_setting' class=label>Altimeter Setting</label> <span class=detail>(in Hg)</span>
+      	        <span class=tooltip>[?]<span class=tooltiptext>Setting at the nearest station</span></span><br>
+      	        
+      	        
+      	<input type='number' id='altimeter_setting' value=29.92 oninput=on_altimeter_setting_input() onblur=calc_power_available()>
+	<br><br>
+      	<label for='true_altitude' class=label>True Altitude</label> <span class=detail>(in feet)</span>
+      	      	        <span class=tooltip>[?]<span class=tooltiptext>True altitude above sea level</span></span><br>
+      	<input type='number' id='true_altitude' value=0 onblur=calc_power_available()>
+	<br><br>
+        <label for='pressure_altitude' class=label>Pressure Altitude</label>
+       		<span class=tooltip>[?]<span class=tooltiptext>Estimated using ((29.92-Alt Setting)x1000) + True Altitude</span></span><br>
+
+        <span id='pressure_altitude' class=selected_value>0</span>       		<span class=alert id=pressure_altitude_alert></span>
         <br><br>
         <label for='temperature' class=label>Temperature<label> <span class=detail>(°C)</span>
         <div class=row>
@@ -31,11 +45,12 @@
             <input type='range' min='-40' max='40' step='5' value='0' class=slider  id='temperature' oninput=calc_power_available()>
           </div>
         </div>
-        <br><br>
-        <label for='wind' class=label>Wind</label> <span class=detail>(kts)</span><br>
+        <br>
+        <label for='wind' class=label>Wind</label> <span class=detail>(kts)</span>
+               		<span class=tooltip>[?]<span class=tooltiptext>Reduces Power Required, depending on Pressure Altitude and AUW</span></span><br>
         <div class=row>
           <div class=column style='width: 20%'>
-            <span id='wind_display' class=selected_value>0<//span>
+            <span id='wind_display' class=selected_value>0</span>
           </div>
           <div class=column style='width: 80%'>
             <input type='range' min='0' max='30' step='5' value='0' class=slider id='wind' oninput=calc_wind()>
@@ -44,7 +59,8 @@
       </div>
 
       <div class=section>
-        <label for='aircraft' class=label>Aircraft zero-fuel weight</label><br>
+        <label for='aircraft' class=label>Aircraft zero-fuel weight</label>
+              	      	        <span class=tooltip>[?]<span class=tooltiptext>SAR Config AUW minus fuel</span></span><br>
         <div class=row>
           <div class=column>
             <span id='aircraft_weight' class=selected_value>11,300<//span>
@@ -59,7 +75,8 @@
         
         <br>
 
-        <label for='load' class=label>Load</label> <span class=detail>(kg)</span><br>
+        <label for='load' class=label>Load / Pax weight</label> <span class=detail>(+/- kg)</span>
+              	      	        <span class=tooltip>[?]<span class=tooltiptext>Adjustments to AUW (pax, eqt, sea strip)</span></span><br>
 
         <input type='number' min='0' max='2000' value='0' id='load' onblur='calc_auw()'><br>
         <br>
@@ -75,22 +92,27 @@
         
 
         <label for='auw' class=label>AUW</label><br>
-        <span id='auw' class=selected_value>13,300</span>
+        <span id='auw' class=selected_value>13,300</span>	        <span class=alert id=auw_alert></span>
       </div>
       
       <div class=section>
         <h2>Power Available</h2>
+
         <div class=row style='width: 100%'>
           <div class=column>Anti-Ice Off <br><span id=pa_aa_off class=selected_value>x</span></div>
           <div class=column style='align: right; text-align: right;'>Anti-Ice On <br><span id=pa_aa_on class=selected_value style='text-align: right'>x</span></div>
         </div>
+                <div class=alert id=pa_fail style='text-align: center'></span>
       </div>
-      
-      <div class=section style='text-align: center'>
+      <div class=section>
         <h2>Power Required</h2>
-        <span id=pr class=selected_value>x</span>
+
+        <div class=row style='width: 100%'>
+          <div class=column>Anti-Ice Off <br><span id=pr class=selected_value>x</span></div>
+          <div class=column style='align: right; text-align: right;'>Anti-Ice On <br><span id=pr_aa class=selected_value style='text-align: right'>x</span></div>
+        </div>
+                <div class=alert id=pr_fail style='text-align: center'></span>
       </div>
-    </div>
   </form>
 	</body>
 </html>

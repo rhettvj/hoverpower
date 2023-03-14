@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+
+  <head> 
+    <link rel='stylesheet' type='text/css' href='style.css' media='screen' />
+    <meta name='viewport' content='width=device, initial-scale=1.0'>
+    <title>Hover Power Info</title>
+  </head>
+  
+
+
+  <form id='form_parameters'>
+
+    <div class=mainBox>
+
+      <div class=section>
+	        <h1>Hover Power Calculator <a class=detail href=index.html>[X]</a> </h1>     	      	               
+      </div>
+      <div class=section>
+      	<p>This calculator is for personal use and planning purposes only.</p>
+      	
+      	<p><u>Data Sources:</u><br>1. AFM EU02X503A Rev 11. Page 4-74 (valid until 21 March 2023) <br>(Torque Required to Hover, 80ft Wheel height, 0% thrust margin)<br>
+      	2. CH149 SMM Annex B - Engine Performance Data/Brief <br>(Torque Available - Anti-Ice Off)</p>
+      	
+      	
+      	<p><u>Altimeter Setting:</u> get this from the nearest station. Can be entered without decimal (2992).</p>
+      	
+      	<p><u>True Altitude:</u> Long click your target in Foreflight; a reasonably accurate height is given after the lat/long under 'Location', on the right.</p>
+      	      	
+      	<p><u>Pressure Altitude:</u> The calculator uses the rule of thumb ((29.92 - altimeter setting) x 1000) + True altitude. This is not the most accurate method but generally works fine. If you want to use a pressure altitude found through other means, set the altimeter setting to 29.92, then input your own pressure altitude under 'True Altitude'.</p>
+      	
+	<p><u>Temperature:</b></u> use the 'Windy' app to get the most accurate temperature. Once you've found your power numbers, check the numbers again using 5 degrees colder or warmer to give you an idea of the best/worst case on scene.</p>
+      	
+      	<p><u>Wind:</u> use 'Windy' and use the same method as above. Note that the the wind charts with Anti-Ice on vs. off are slightly different. The calculator has a different wind table for each anti-ice state.</p>
+      	
+      	<p><u>Aircraft zero fuel weight:</u> this only impacts the AUW. If it's inaccurate, correct it with 'Load'. It should represent the helicopter's AUW minus fuel. It includes the normal SAR Crew and their equipment.</p>
+
+      	<p><u>Load:</u> use this to adjust the AUW if you take anything extra (people or equipment) or if you take anything off (sea strip, etc).</p>
+      	
+	<p><u>Fuel:</u> this also only affects AUW.</p>
+	
+      	<p><u>AUW:</u> This is the only variable in this section that is used for performance calculations. The AUW influences Power Required (not Power Available).</p>
+      	
+      	<p><u>Power Available:</u> This is calculated from the chart the FE normally uses. It uses interpolation which should be at least as accurate as what the FE provides.</p>
+      	<p>The value for Anti-Ice On is derived from Anti-Ice Off Power Available -8 (as per the SMM). The formula is then applied to find the OEI equivalent: PA * 3 / 2. <br>
+      	Note: this is a maximum (2.5 minute) chart. <br>
+      	Note: the AFM has charts (max. 30 minute) for Power Avaialble, but the calculator uses the FE's chart (from the SMM) to avoid discrepancy.</p>
+
+      	
+      	
+	<p><u>Power Required:</u> This is calculated from AFM EU02X503A Rev 11. Page 4-74 (valid until 21 March 2023) <br>
+		<u>'Torque Required to Hover, 80ft Wheel height, 0% thrust margin'</u><br>
+		Note: The calculator has a table for each chart: anti-ice on and anti-ice off.<br>
+		Note: The state of ECS does not affect Power Required to hover.<br>
+		This chart uses Density Altitude, AUW, and Wind to show an estimate of the torque required to keep the helicopter in the hover out of ground effect.<br>
+		Density altitude is derived from the Pressure Altitude you provided, and the Temperature, using an ISA (International Standard Atmosphere) table.<br>
+		The Wind you provide is plotted against a table derived from the charts (anti-ice on or off) to adjust the Power Required.</p>
+		
+	<p>The calculator is for personal use and planning only.</p>
+	
+	<p>I'm happy to take feedback-- this version includes many adjustments made after feedback was given by other pilots.</p>
+	
+	<p>Rescue! <br>  Rhett.</p>
+	
+	 
+      	 
+      </div>
+      	
+    </div>
+  </form>
+	</body>
+</html>
+
+<!-- 
+
+      <tr>
+        <td><label for='alt_setting'>Altimeter Setting<label></td> 
+        <td><input type='text' id='alt_setting' value='29.92'></td>
+        <td>in/mg</td>
+      </tr>
+      
+      <tr>
+        <td><label for='altitude'>Altitude</label></td>
+        <td><input type='text' id='altitude'></td>
+        <td>feet</td>
+      </tr>
+
+
+      <tr>
+        <td><label for='pressure_altitude'>Pressure Altitude</label></td>
+        <td><input type='text' id='pressure_altitude' disabled></td>
+        <td>feet</td>
+      </tr>
+
+      <tr><td>&nbsp;</td><tr>
+
+      <tr>
+        <td><label for='temperature'>Temperature<label></td>
+        <td><input type='range' min='-40' max='40' value='0' id='temperature'></td>
+        <td>C</td>
+      </tr>
+-->
