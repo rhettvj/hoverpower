@@ -21,8 +21,7 @@
       </div>
   
       <div class=section>
-      	<label for='alt_setting' class=label>Altimeter Setting</label> <span class=detail>(in Hg)</span>
-      	        <span class=tooltip>[?]<span class=tooltiptext>Setting at the nearest station</span></span><br>
+      	<label for='alt_setting' class=label>Altimeter Setting</label> <span class=detail>(in Hg)</span><br>
       	        
       	        
       	<input type='number' id='altimeter_setting' value=29.92 oninput=on_altimeter_setting_input() onblur=calc_power_available()>
@@ -31,8 +30,7 @@
       	      	        <span class=tooltip>[?]<span class=tooltiptext>True altitude above sea level</span></span><br>
       	<input type='number' id='true_altitude' value=0 onblur=calc_power_available()>
 	<br><br>
-        <label for='pressure_altitude' class=label>Pressure Altitude</label>
-       		<span class=tooltip>[?]<span class=tooltiptext>Estimated using ((29.92-Alt Setting)x1000) + True Altitude</span></span><br>
+        <label for='pressure_altitude' class=label>Pressure Altitude</label><br>
 
         <span id='pressure_altitude' class=selected_value>0</span>       		<span class=alert id=pressure_altitude_alert></span>
         <br><br>
@@ -46,8 +44,7 @@
           </div>
         </div>
         <br>
-        <label for='wind' class=label>Wind</label> <span class=detail>(kts)</span>
-               		<span class=tooltip>[?]<span class=tooltiptext>Reduces Power Required, depending on Pressure Altitude and AUW</span></span><br>
+        <label for='wind' class=label>Wind</label> <span class=detail>(kts)</span><br>
         <div class=row>
           <div class=column style='width: 20%'>
             <span id='wind_display' class=selected_value>0</span>
@@ -59,8 +56,7 @@
       </div>
 
       <div class=section>
-        <label for='aircraft' class=label>Aircraft zero-fuel weight</label>
-              	      	        <span class=tooltip>[?]<span class=tooltiptext>SAR Config AUW minus fuel</span></span><br>
+        <label for='aircraft' class=label>Aircraft zero-fuel weight</label><br>
         <div class=row>
           <div class=column>
             <span id='aircraft_weight' class=selected_value>11,300<//span>
@@ -75,8 +71,7 @@
         
         <br>
 
-        <label for='load' class=label>Load / Pax weight</label> <span class=detail>(+/- kg)</span>
-              	      	        <span class=tooltip>[?]<span class=tooltiptext>Adjustments to AUW (pax, eqt, sea strip)</span></span><br>
+        <label for='load' class=label>Load / Pax weight</label> <span class=detail>(+/- kg)</span><br>
 
         <input type='number' min='0' max='2000' value='0' id='load' onblur='calc_auw()'><br>
         <br>
