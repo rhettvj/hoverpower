@@ -208,11 +208,11 @@ function get_auw_index(auw) {
 // returns: an array of power availables for that altitude
 function get_pa_row(pressure_altitude) {
   var pa = Math.round(pressure_altitude / 1000);
-  //console.log('Pressure altitude rounded and divided: ' + pa);
-  //console.log('get_pa_row: power_available_table index: ' + (pa + 1));
-  // -1000 has an index of 0 in the table
-  // 1000' has an index of 2 in the table
-  return power_available_table[pa + 1];
+  console.log('Pressure altitude rounded and divided: ' + pa);
+  console.log('get_pa_row: power_available_table index: ' + (pa + power_available_row_zero_index));
+  // -2000 has an index of 0 in the table
+  // 1000' has an index of 2 in the table (???)
+  return power_available_table[pa + power_available_row_zero_index];
 }
 // density_altitude: the density altitude on a thousand foot interval
 // returns: an array of power required for that altitude
@@ -221,8 +221,6 @@ function get_pr_row(density_altitude,aa) {
   console.log('Density altitude: ' + density_altitude);
   //console.log('get_pr_row: power_required_table index: ' + (da+4));
 
-  // -4000 has an index of 0 in the table
-  // 1000' has an index of 3 in the table
   if (aa == false) {
     //console.log('pr row: ' + power_required_table[da + power_required_row_zero_index]);
     return power_required_table[da + power_required_row_zero_index];
@@ -236,11 +234,14 @@ function get_pr_row(density_altitude,aa) {
 //requires pressure_altitude on a thousand foot line
 function lookup_power_available(pressure_altitude, temp) {
   if (pressure_altitude % 1000 != 0) {
-    //console.log('lookup_power_available: pressure_altitude not on a thousand foot line: ' + pressure_altitude);
+    console.log('lookup_power_available: pressure_altitude not on a thousand foot line: ' + pressure_altitude);
     return 0;
   }
+  console.log('pressure alt for lookup: ' + pressure_altitude);
   var row = get_pa_row(pressure_altitude);
+  console.log('lookup_power_available row: ' + row);
   var temp_index = get_temp_index(temp);
+  console.log('temp index: ' + temp);
   return row[temp_index];
 }
 //requires density_altitude on a thousand foot line
@@ -423,10 +424,10 @@ function check_load(load) {
   return load;
 }  
 
-function on_altimeter_setting_input() {
-  var input = document.getElementById('altimeter_setting').value;
-  if (input.length > 3) { calc_power_available(); }
-}
+//function on_altimeter_setting_input() {
+//  var input = document.getElementById('altimeter_setting').value;
+//  if (input.length > 3) { calc_power_available(); }
+//}
 // Called whenever there's a change to pressure altitude or temp,
 // calls calc_power_required() as well
 function calc_power_available() {
@@ -443,7 +444,8 @@ function calc_power_available() {
   console.log("true_altitude now: " + document.getElementById('true_altitude').value);
 
   pressure_altitude = get_pressure_altitude(alt_setting, true_altitude);
-  
+  console.log('min PA: ' + min_pa);
+  console.log('pressure alt: ' + pressure_altitude);
   if (pressure_altitude < min_pa || pressure_altitude > max_pa) {
     document.getElementById('pressure_altitude_alert').innerHTML = "[Out of Range: Min " + min_pa + " Max " + max_pa + "]";
     fail_pa("Pressure Altitude out of range.");
